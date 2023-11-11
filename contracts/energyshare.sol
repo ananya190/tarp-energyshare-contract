@@ -101,7 +101,7 @@ contract EnergySharing {
     SellOffer storage sellOffer = sellOffers[_sellOfferId];
 
     require(!sellOffer.sold, "Sell offer has already been sold");
-    require(sellOffer.seller != msg.sender, "Seller cannot complete the transaction");
+    require(sellOffer.seller == msg.sender, "Only the seller can complete the transaction");
 
     // Get the buy offer ID from the bestBuyOfferId
     uint buyOfferId = sellOffer.bestBuyOfferId;
